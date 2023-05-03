@@ -1,22 +1,18 @@
-import UserService from '../services/UserService';
+const { UserService } = require('../services');
 
-export default class UserController {
-  constructor(req, res, next) {
-    this.req = req;
-    this.res = res;
-    this.next = next;
-    this.userService = new UserService();
-  }
+const login = async (req, res) => {
+  const { email, password } = req.body;
 
-  async login(req, res) {
-    const { email, password } = req.body;
-    const { type, message } = await this.userService.loginFunction(email, password);
-    if (type) return res.status(401).json({ message });
-    res.status(200).json({ token: message });
-  }
+  const { type, message } = await UserService.loginFunction(email, password);
+
+  if (type) return res.status(401).json({ message });
+
+  res.status(200).json({ token: message });
+};
+
+module.exports = { login };
 
   // async verifyLogin(req, res) {
   //   const { user } = req.body;
   //   return res.status(200).json({ role: user.payload.role });
   // }
-}

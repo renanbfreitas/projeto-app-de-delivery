@@ -1,31 +1,24 @@
-import { DataTypes } from 'sequelize';
-const { INTEGER, STRING, DECIMAL, DATE } = DataTypes;
-
-const CreateSale = (sequelize) => {
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
   const Sale = sequelize.define('Sales', {
-    id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-    userId: INTEGER,
-    sellerId: INTEGER,
-    totalPrice: DECIMAL,
-    deliveryAdress: STRING,
-    deliveryNumber: STRING,
-    saleDate: DATE,
-    status: STRING,
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    userId: DataTypes.INTEGER,
+    sellerId: DataTypes.INTEGER,
+    totalPrice: DataTypes.DECIMAL,
+    deliveryAdress: DataTypes.STRING,
+    deliveryNumber: DataTypes.STRING,
+    saleDate: DataTypes.DATE,
+    status: DataTypes.STRING,
   }, {
     timestamps: false,
     tableName: 'sales',
   });
   Sale.associate = (models) => {
-    Sale.belongsTo(
-models.Users,
-      { foreignKey: 'userId', as: 'users' },
-    );
-    Sale.belongsTo(
-models.Users,
-      { foreignKey: 'sellerId', as: 'sellers' },
-    );
+    Sale.belongsTo(models.Users, { foreignKey: 'userId', as: 'users' });
+    Sale.belongsTo(models.Users, { foreignKey: 'sellerId', as: 'sellers' });
   };
   return Sale;
 };
-
-module.exports = CreateSale;
