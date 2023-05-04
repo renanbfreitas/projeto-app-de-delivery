@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('Users', {
+  const User = sequelize.define('User', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -17,8 +17,8 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   User.associate = (models) => {
-    User.hasMany(models.Sales, { as: 'SalesUser', foreignKey: 'userId' });
-    User.hasMany(models.Sales, { as: 'SalesSeller', foreignKey: 'sellerId' });
+    User.hasMany(models.Sales, { as: 'Sales', foreignKey: 'userId' });
+    User.hasMany(models.Sales, { as: 'SellerSales', foreignKey: 'sellerId' });
   };
   
   return User;
