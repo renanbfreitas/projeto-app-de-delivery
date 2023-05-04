@@ -1,17 +1,14 @@
-const { DataTypes } = require('sequelize');
-
-const { INTEGER, STRING, DECIMAL } = DataTypes;
-
-const CreateProduct = (sequelize) => {
-  const Product = sequelize.define('Products', {
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  const Product = sequelize.define('Product', {
     id: {
-      type: INTEGER,
+      type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    name: STRING,
-    price: DECIMAL,
-    urlImage: STRING,
+    name: DataTypes.STRING,
+    price: DataTypes.DECIMAL,
+    urlImage: DataTypes.STRING,
   }, {
     timestamps: false,
     tableName: 'products',
@@ -19,5 +16,3 @@ const CreateProduct = (sequelize) => {
   
   return Product;
 };
-
-module.exports = CreateProduct;

@@ -1,28 +1,26 @@
-const { DataTypes } = require('sequelize');
-const { INTEGER, STRING } = DataTypes;
-
-const CreateUser = (sequelize) => {
-  const User = sequelize.define('Users', {
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  const User = sequelize.define('User', {
     id: {
-      type: INTEGER,
+      type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    name: STRING,
-    email: STRING,
-    password: STRING,
-    role: STRING,
+    name: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING,
+    role: DataTypes.STRING,
   }, {
     timestamps: false,
     tableName: 'users',
+    underscored: true,
   });
 
   User.associate = (models) => {
-    User.hasMany(models.Sales, { as: 'SalesUser', foreignKey: 'userId' });
-    User.hasMany(models.Sales, { as: 'SalesSeller', foreignKey: 'sellerId' });
+
+    User.hasMany(models.Sales, { as: 'Sales', foreignKey: 'userId' });
+    User.hasMany(models.Sales, { as: 'SellerSales', foreignKey: 'sellerId' });
   };
   
   return User;
 };
-
-module.exports = CreateUser;

@@ -1,5 +1,4 @@
 const { CreateUser } = require('../database/models');
-const { verifyPassword } = require('../api/utils/md5');
 const { generateToken } = require('../api/utils/jwt');
 const { validatorFieldsLogin } = require('./validators/validatorFunctions');
 

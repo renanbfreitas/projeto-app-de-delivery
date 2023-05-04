@@ -1,8 +1,11 @@
 const jwt = require('jsonwebtoken');
 
-module.exports = {
-  sign: (obj) => {
-    const { password, ...publicInfo } = obj;
-    return jwt.sign(publicInfo, 'secret_key');
-  },
-};
+const config = { algorithm: 'HS256', expiresIn: '7h' };
+const secret = process.env.JWT_SECRET || 'secret';
+
+const sign = (userData) => {
+    const { password, ...publicInfo } = userData;
+    return jwt.sign(publicInfo, secret, config);
+  };
+
+module.exports = sign;

@@ -1,13 +1,11 @@
-const { DataTypes } = require('sequelize');
-const { INTEGER } = DataTypes;
-
-const CreateSalesProducts = (sequelize) => {
+'use strict';
+module.exports = (sequelize, DataTypes) => {
   const SalesProduct = sequelize.define(
 'SalesProducts', 
 {
-    saleId: INTEGER,
-    productId: INTEGER,
-    quantity: INTEGER,
+    saleId: DataTypes.INTEGER,
+    productId: DataTypes.INTEGER,
+    quantity: DataTypes.INTEGER,
   },
 {
     timestamps: false,
@@ -17,14 +15,14 @@ const CreateSalesProducts = (sequelize) => {
 );
 
   SalesProduct.associate = (models) => {
-    models.Sales.belongsToMany(models.Products, {
+    models.Sales.belongsToMany(models.Product, {
       as: 'Product',
       through: SalesProduct,
       foreignKey: 'saleId',
       otherKey: 'productId',
     });
     
-    models.Products.belongsToMany(models.Sales, {
+    models.Product.belongsToMany(models.Sales, {
       as: 'Sales',
       through: SalesProduct,
       foreignKey: 'productId',
@@ -34,5 +32,3 @@ const CreateSalesProducts = (sequelize) => {
   
   return SalesProduct;
 };
-
-module.exports = CreateSalesProducts;
