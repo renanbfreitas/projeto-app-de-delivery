@@ -1,4 +1,4 @@
-import { DataTypes } from 'sequelize';
+const { DataTypes } = require('sequelize');
 const { INTEGER, STRING } = DataTypes;
 
 const CreateUser = (sequelize) => {
@@ -18,8 +18,8 @@ const CreateUser = (sequelize) => {
   });
 
   User.associate = (models) => {
-    User.hasMany(models.Sales, { as: 'Sales', foreignKey: 'userId' });
-    User.hasMany(models.Sales, { as: 'Sales', foreignKey: 'sellerId' });
+    User.hasMany(models.Sales, { as: 'SalesUser', foreignKey: 'userId' });
+    User.hasMany(models.Sales, { as: 'SalesSeller', foreignKey: 'sellerId' });
   };
   
   return User;

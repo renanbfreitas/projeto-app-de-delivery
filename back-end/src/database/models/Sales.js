@@ -1,4 +1,4 @@
-import { DataTypes } from 'sequelize';
+const { DataTypes } = require('sequelize');
 const { INTEGER, STRING, DECIMAL, DATE } = DataTypes;
 
 const CreateSale = (sequelize) => {
