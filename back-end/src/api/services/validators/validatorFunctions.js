@@ -1,4 +1,4 @@
-const { infoLoginSchema } = require('./schemas');
+const { infoLoginSchema, infoRegisterSchema } = require('./schemas');
 
 const validatorFieldsLogin = (infoLogin) => {
   const { error } = infoLoginSchema.validate(infoLogin);
@@ -10,6 +10,17 @@ const validatorFieldsLogin = (infoLogin) => {
   return null;
 };
 
+const validatorFieldsRegister = (infoRegister) => {
+  const { error } = infoRegisterSchema.validate(infoRegister);
+
+  if (error) {
+    return true;
+  }
+  
+  return null;
+};
+
 module.exports = {
   validatorFieldsLogin,
+  validatorFieldsRegister,
 };
