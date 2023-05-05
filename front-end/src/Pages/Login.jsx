@@ -12,6 +12,7 @@ function Login() {
   const [isIncorrectValues, setIsIncorrectValues] = useState(false);
   const [isDisable, setIsDisable] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
+  const [toRegister, setToRegister] = useState(false);
 
   const verifyFields = () => {
     const MIN_LENGTH = 6;
@@ -68,7 +69,7 @@ function Login() {
           disabled={ isDisable }
         />
         <Button
-          onClick={ () => console.log('register') }
+          onClick={ () => setToRegister(true) }
           text="Ainda não tenho conta"
           dataTestId="common_login__button-register"
           disabled={ false }
@@ -83,7 +84,7 @@ function Login() {
         )
       }
       {isLogged && <Redirect to="/customer/products" />}
-      {/* {toRegister && <Redirect to="/register" />} */}
+      {toRegister && <Redirect to="/register" />}
     </div>
   );
 }
