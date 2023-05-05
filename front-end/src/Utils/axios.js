@@ -12,4 +12,9 @@ export const loginRequest = async (endpoint, body) => {
   return data;
 };
 
+export const registerRequest = async (endpoint, body) => {
+  const { data } = await api.post(endpoint, body);
+  return data;
+};
+
 export default api;

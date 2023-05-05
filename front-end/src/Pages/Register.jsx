@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 // import { Redirect } from 'react-router-dom';
 import Button from '../Components/Button';
 import Input from '../Components/Input';
+import { registerRequest } from '../Utils/axios';
 
 function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [isIncorrectValues, setIsIncorrectValues] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
-  // const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const history = useHistory();
 
   const verifyFields = () => {
     const maxNameLength = 12;
     const minPasswordLength = 6;
     const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    console.log(`name: ${name.length <= maxNameLength}`);
-    console.log(`email: ${regexEmail.test(email)}`);
-    console.log(`password: ${password.length >= minPasswordLength}`);
     return (
       regexEmail.test(email)
       && password.length >= minPasswordLength
@@ -30,19 +29,17 @@ function Register() {
     setIsDisabled(!checkInputs);
   }, [name, email, password]);
 
-  // const handleLogin = async () => {
-  //   const loginInfo = { email, password };
+  const handleRegister = async () => {
+    const registerInfo = { name, email, password };
 
-  //   try {
-  //     const token = await loginRequest('/login', loginInfo);
-  //     console.log(token.token);
-  //     setToken(token.token);
-  //     return setIsLogged(true);
-  //   } catch (error) {
-  //     setIsIncorrectValues(true);
-  //     return setErrorMessage(error.response.data.message);
-  //   }
-  // };
+    try {
+      await registerRequest('/register', registerInfo);
+
+      return history.push('/customer/products');
+    } catch (error) {
+      return setErrorMessage(error.message);
+    }
+  };
 
   return (
     <div>
@@ -75,20 +72,19 @@ function Register() {
           value={ password }
         />
         <Button
-          onClick={ () => {} }
+          onClick={ () => handleRegister() }
           text="Login"
           dataTestId="common_register__button-register"
           disabled={ isDisabled }
         />
       </form>
-      {/* {
-        isIncorrectValues
-        && (
-          <p data-testid="common_login__element-invalid-email">
+      {
+        errorMessage && (
+          <p data-testid="common_register__element-invalid_register">
             {errorMessage}
           </p>
         )
-      } */}
+      }
     </div>
   );
 }
