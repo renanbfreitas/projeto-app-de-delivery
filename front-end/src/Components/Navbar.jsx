@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { getUser, logout } from '../Utils/LocalStorage';
+import '../Styles/components/navbar.css';
 
 export default function Navbar() {
   const [userName, setUserName] = useState('');

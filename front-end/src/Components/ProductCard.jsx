@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
 import { addProductCart, getProductsCart } from '../Utils/LocalStorage';
+import '../Styles/components/productCard.css';
 
 export default function ProductCard(product) {
   const { id, productName, price, urlImage, forceRender } = product;
@@ -31,7 +32,7 @@ export default function ProductCard(product) {
   };
 
   return (
-    <div>
+    <div className="Produto">
       <h3
         data-testid={ `customer_products__element-card-title-${id}` }
       >
@@ -53,10 +54,10 @@ export default function ProductCard(product) {
       </p>
       <Button
         onClick={ changeCart }
-        dataTestId={ `customer_products__button-card-add-item-${id}` }
-        disable={ false }
-        nameButton="add"
-        text="+"
+        dataTestId={ `customer_products__button-card-rm-item-${id}` }
+        disabled={ quantity <= 0 }
+        nameButton="sub"
+        text="-"
       />
       <input
         data-testid={ `customer_products__input-card-quantity-${id}` }
@@ -69,10 +70,10 @@ export default function ProductCard(product) {
       />
       <Button
         onClick={ changeCart }
-        dataTestId={ `customer_products__button-card-rm-item-${id}` }
-        disabled={ quantity <= 0 }
-        nameButton="sub"
-        text="-"
+        dataTestId={ `customer_products__button-card-add-item-${id}` }
+        disable={ false }
+        nameButton="add"
+        text="+"
       />
     </div>
   );

@@ -5,6 +5,7 @@ import Navbar from '../Components/Navbar';
 import ProductCard from '../Components/ProductCard';
 import { productsRequest } from '../Utils/axios';
 import { getProductsCart, getUser } from '../Utils/LocalStorage';
+import '../Styles/pages/products.css';
 
 export default function Products({ history }) {
   const [isLogged, setIsLogged] = useState(false);
@@ -39,18 +40,19 @@ export default function Products({ history }) {
   return (
     <div>
       {isLogged && <Redirect to="/login" />}
-      <h1>Products</h1>
       <Navbar />
-      {dataProducts.map(({ id, name, price, urlImage }) => (
-        <ProductCard
-          key={ id }
-          id={ id }
-          productName={ name }
-          price={ price }
-          urlImage={ urlImage }
-          forceRender={ setEditionCount }
-        />
-      ))}
+      <section className="products-container">
+        {dataProducts.map(({ id, name, price, urlImage }) => (
+          <ProductCard
+            key={ id }
+            id={ id }
+            productName={ name }
+            price={ price }
+            urlImage={ urlImage }
+            forceRender={ setEditionCount }
+          />
+        ))}
+      </section>
       <button
         type="button"
         data-testid="customer_products__button-cart"
