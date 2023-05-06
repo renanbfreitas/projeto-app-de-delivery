@@ -29,7 +29,9 @@ const loginFunction = async (email, password) => {
 
   const token = sign(userWithoutPassword);
 
-  return { type: null, message: token };
+  const { id, ...userWithoutId } = userWithoutPassword;
+
+  return { type: null, message: { ...userWithoutId, token } };
 };
 
 const registerFunction = async ({ name, email, password }) => {
@@ -45,13 +47,20 @@ const registerFunction = async ({ name, email, password }) => {
 
   const hashedPassword = hashPassword(password);
   const userObj = { name, email, password: hashedPassword, role: 'customer' };
-  const result = await User.create({ ...userObj });
+  const result = await User.create(userObj);
 
   if (!result) {
     return { type: 'INVALID_VALUES', message: invalidRegister };
   }
 
-  return { type: null, message: null };
+  const newUser = findUser || result.dataValues;
+  const { _password, ...userWithoutPassword } = newUser;
+
+  const token = sign(userWithoutPassword);
+
+  const { _id, ...userWithoutId } = userWithoutPassword;
+
+  return { type: null, message: { ...userWithoutId, token } };
 };
 
 module.exports = { loginFunction, registerFunction };

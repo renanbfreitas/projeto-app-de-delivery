@@ -8,7 +8,7 @@ const login = async (req, res) => {
   if (type === 'INVALID_VALUES') return res.status(401).json({ message });
   if (type === 'NOT_FOUND') return res.status(404).json({ message });
 
-  return res.status(200).json({ token: message });
+  return res.status(200).json({ message });
 };
 
 const register = async (req, res) => {
