@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
 import { getUser } from '../Utils/LocalStorage';
 import ProductList from '../Components/ProductList';
+import DetailsOrders from '../Components/DetailsOrders';
 
 function Checkout() {
   const [isLogged, setIsLogged] = useState(false);
@@ -17,6 +18,7 @@ function Checkout() {
       {isLogged && <Redirect to="/login" />}
       <Navbar />
       <ProductList />
+      <DetailsOrders />
     </div>
   );
 }

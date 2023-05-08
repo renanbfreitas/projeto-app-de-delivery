@@ -31,3 +31,10 @@ export function getUser() {
 export function saveUser(user) {
   localStorage.setItem(USER, JSON.stringify(user));
 }
+
+export function removeProduct(id) {
+  const cart = getProductsCart();
+  const newCart = [...cart].filter((item) => item.id !== id);
+  localStorage.setItem(CART_ITEMS, JSON.stringify(newCart));
+  return newCart;
+}
