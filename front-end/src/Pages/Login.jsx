@@ -33,7 +33,6 @@ function Login() {
     try {
       const { message } = await loginRequest('/login', loginInfo);
       setToken(message.token);
-      console.log(message.token);
       localStorage.setItem('user', JSON.stringify(message));
       return setIsLogged(true);
     } catch (error) {

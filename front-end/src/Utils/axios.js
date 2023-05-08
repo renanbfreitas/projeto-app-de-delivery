@@ -22,4 +22,9 @@ export const productsRequest = async (endpoint) => {
   return data;
 };
 
+export const checkoutOrder = async (endpoint, body) => {
+  const { data } = await api.post(endpoint, body);
+  return data;
+};
+
 export default api;
