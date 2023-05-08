@@ -31,13 +31,14 @@ function Login() {
       password,
     };
     try {
-      const token = await loginRequest('/login', loginInfo);
-      console.log(token.token);
-      setToken(token.token);
+      const { message } = await loginRequest('/login', loginInfo);
+      setToken(message.token);
+      console.log(message.token);
+      localStorage.setItem('user', JSON.stringify(message));
       return setIsLogged(true);
     } catch (error) {
       setIsIncorrectValues(true);
-      return setErrorMessage(error.response.data.message);
+      return setErrorMessage(error.message);
     }
   };
 

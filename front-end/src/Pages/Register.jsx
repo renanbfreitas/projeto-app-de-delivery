@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 // import { Redirect } from 'react-router-dom';
 import Button from '../Components/Button';
 import Input from '../Components/Input';
-import { registerRequest } from '../Utils/axios';
+import { registerRequest, setToken } from '../Utils/axios';
 
 function Register() {
   const [name, setName] = useState('');
@@ -33,7 +33,10 @@ function Register() {
     const registerInfo = { name, email, password };
 
     try {
-      await registerRequest('/register', registerInfo);
+      const { message } = await registerRequest('/register', registerInfo);
+
+      setToken(message.token);
+      localStorage.setItem('user', JSON.stringify(message));
 
       return history.push('/customer/products');
     } catch (error) {
