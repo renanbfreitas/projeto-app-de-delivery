@@ -1,32 +1,45 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { checkoutOrder, getSellers, setToken } from '../Utils/axios';
 
 function DetailsOrders() {
-  const [sellers] = useState([]);
-  const [seller, setSeller] = useState(0);
+  const [sellerId, setSellerId] = useState(2);
+  const [sellers, setSellers] = useState([]);
   const [address, setAddress] = useState('');
   const [number, setNumber] = useState('');
-  console.log('Hello');
+  const history = useHistory();
 
-  const dispatch = useDispatch();
-  const products = JSON.parse(localStorage.getItem('cartItems') || []);
-  console.log('produtct', products);
+  const products = JSON.parse(localStorage.getItem('cartItems')) || [];
+  const userInfo = JSON.parse(localStorage.getItem('user'));
   const sumPrices = products.reduce((acc, curr) => (curr.price * curr.quantity) + acc, 0);
 
+  useEffect(() => {
+    const requestSellers = async () => {
+      const response = await getSellers('/orders/sellers');
+      return setSellers(response);
+    };
+    requestSellers();
+  }, []);
+
   async function finishOrder() {
-    const { id, token } = JSON.parse(localStorage.getItem('user'));
-    const body = {
-      user_id: id,
-      seller_id: seller,
+    setToken(userInfo.token);
+    const orderInfo = {
+      sellerId,
       status: 'Pendente',
-      delivery_address: address,
-      delivery_number: number,
-      total_price: sumPrices,
+      deliveryAddress: address,
+      deliveryNumber: number,
+      totalPrice: sumPrices,
       products,
     };
-    console.log(token);
-    console.log(body);
-    dispatch(setProducts([]));
+
+    try {
+      const order = await checkoutOrder('/orders/finish', orderInfo);
+
+      history.push(`/customer/orders/${order.id}`);
+      // localStorage.removeItem('cartItems');
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -38,7 +51,7 @@ function DetailsOrders() {
           P. Vendedora Responsável:
           <select
             data-testid="customer_checkout__select-seller"
-            onChange={ ({ target }) => setSeller(target.value) }
+            onChange={ ({ target }) => setSellerId(target.value) }
           >
             { sellers.map(({ id, name }, index) => (
               <option key={ index } value={ id }>{ name }</option>
