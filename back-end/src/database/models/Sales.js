@@ -5,12 +5,13 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
     sellerId: DataTypes.INTEGER,
     totalPrice: DataTypes.DECIMAL,
-    deliveryAdress: DataTypes.STRING,
+    deliveryAddress: DataTypes.STRING,
     deliveryNumber: DataTypes.STRING,
-    saleDate: DataTypes.DATE,
+    saleDate: { type: DataTypes.DATE, defaultValue: DataTypes.NOW},
     status: DataTypes.STRING,
   }, {
     timestamps: false,
+    underscored: true,
     tableName: 'sales',
   });
   Sales.associate = (models) => {

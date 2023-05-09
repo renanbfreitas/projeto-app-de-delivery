@@ -27,4 +27,9 @@ export const checkoutOrder = async (endpoint, body) => {
   return data;
 };
 
+export const getSellers = async (endpoint) => {
+  const { data } = await api.get(endpoint);
+  return data;
+};
+
 export default api;

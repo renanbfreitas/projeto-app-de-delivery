@@ -1,17 +1,16 @@
 'use strict';
-const { DATE, DECIMAL, INTEGER, NOW, STRING } = require('sequelize')
 
 module.exports = {
-  async up (queryInterface) {
+  async up (queryInterface, Sequelize) {
     await queryInterface.createTable('sales', {
       id: {
-        type: INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
       },
       userId: {
-        type: INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         field: 'user_id',
         references: {
@@ -20,7 +19,7 @@ module.exports = {
         }
       },
       sellerId: {
-        type: INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         field: 'seller_id',
         references: {
@@ -29,28 +28,28 @@ module.exports = {
         }
       },
       totalPrice: {
-        type: DECIMAL(9,2),
+        type: Sequelize.DECIMAL(9,2),
         allowNull: false,
         field: 'total_price',
       },
-      deliveryAdress: {
-        type: STRING(100),
+      deliveryAddress: {
+        type: Sequelize.STRING(100),
         allowNull: false,
-        field: 'delivery_adress',
+        field: 'delivery_address',
       },
       deliveryNumber: {
-        type: STRING(50),
+        type: Sequelize.STRING(50),
         allowNull: false,
         field: 'delivery_number',
       },
       saleDate: {
-        type: DATE,
-        defaultValue: NOW,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.NOW,
         allowNull: false,
         field: 'sale_date',
       },
       status: {
-        type: STRING(50),
+        type: Sequelize.STRING(50),
         allowNull: false,
       },
     }, {
