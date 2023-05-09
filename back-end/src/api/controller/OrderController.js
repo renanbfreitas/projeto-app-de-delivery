@@ -4,7 +4,6 @@ const checkoutOrder = async (req, res) => {
   const { id } = req.userData;
   const orderInfo = req.body;
   orderInfo.userId = id;
-  console.log(orderInfo);
   
   const { message } = await OrderService.checkoutOrder(orderInfo);
   
