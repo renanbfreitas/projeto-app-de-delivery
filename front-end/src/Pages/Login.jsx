@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import Button from '../Components/Button';
 import Input from '../Components/Input';
 import { loginRequest, setToken } from '../Utils/axios';
+import { getUser } from '../Utils/LocalStorage';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -19,6 +20,11 @@ function Login() {
     const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return regexEmail.test(email) && password.length >= MIN_LENGTH;
   };
+
+  useEffect(() => {
+    const user = getUser();
+    if (!user || !user.token) return setIsLogged(true);
+  }, []);
 
   useEffect(() => {
     const verify = verifyFields();
@@ -43,6 +49,7 @@ function Login() {
 
   return (
     <div>
+      {isLogged && <Redirect to="/customer/products" />}
       <form>
         <Input
           type="email"
