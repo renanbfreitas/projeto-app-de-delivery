@@ -1,8 +1,8 @@
 const { User } = require('../../database/models');
 const sign = require('../utils/jwt');
-const { 
+const {
   validatorFieldsLogin,
-  validatorFieldsRegister, 
+  validatorFieldsRegister,
 } = require('./validators/validatorFunctions');
 const { verifyPassword, hashPassword } = require('../utils/md5');
 
@@ -18,20 +18,20 @@ const loginFunction = async (email, password) => {
   const user = result ? result.dataValues : null;
 
   if (!user) {
-    return { type: 'NOT_FOUND', message: invalidLogin }; 
+    return { type: 'NOT_FOUND', message: invalidLogin };
   }
 
   const { password: passwordDB, ...userWithoutPassword } = user;
 
   if (!verifyPassword(passwordDB, password)) {
-  return { type: 'NOT_FOUND', message: invalidLogin };   
+    return { type: 'NOT_FOUND', message: invalidLogin };
   }
 
   const token = sign(userWithoutPassword);
 
   const { id, ...userWithoutId } = userWithoutPassword;
 
-  return { type: null, message: { ...userWithoutId, token } };
+  return { type: null, message: { id, ...userWithoutId, token } };
 };
 
 const registerFunction = async ({ name, email, password }) => {
@@ -63,4 +63,9 @@ const registerFunction = async ({ name, email, password }) => {
   return { type: null, message: { ...userWithoutId, token } };
 };
 
-module.exports = { loginFunction, registerFunction };
+const getAllUsers = async () => {
+  const allusers = await User.findAll();
+  return allusers;
+};
+
+module.exports = { loginFunction, registerFunction, getAllUsers };

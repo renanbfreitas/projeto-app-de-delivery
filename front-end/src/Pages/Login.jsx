@@ -23,7 +23,7 @@ function Login() {
 
   useEffect(() => {
     const user = getUser();
-    if (!user || !user.token) return setIsLogged(true);
+    if (user) return setIsLogged(true);
   }, []);
 
   useEffect(() => {

@@ -2,6 +2,12 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 function CardOrder({ id, status, saleDate, totalPrice }) {
+  const data = new Date(saleDate);
+  const dia = data.getDate();
+  const mes = (data.getMonth() + 1).toString().padStart(2, '0');
+  const ano = data.getFullYear();
+  const formatedData = `${dia}/${mes}/${ano}`;
+
   return (
     <div>
       <Link to={ `/customer/orders/${id}` }>
@@ -23,12 +29,12 @@ function CardOrder({ id, status, saleDate, totalPrice }) {
           <p
             data-testid={ `customer_orders__element-order-date-${id}` }
           >
-            {formatDate(saleDate)}
+            {formatedData}
           </p>
           <p
             data-testid={ `customer_orders__element-card-price-${id}` }
           >
-            {formatValues(totalPrice)}
+            {(totalPrice).replace('.', ',')}
           </p>
         </div>
       </Link>

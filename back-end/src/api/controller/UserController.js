@@ -22,4 +22,9 @@ const register = async (req, res) => {
   return res.status(201).json({ message });
 };
 
-module.exports = { login, register };
+const getAllUsers = async (req, res) => {
+  const users = await UserService.getAllUsers();
+  return res.status(200).json(users);
+};
+
+module.exports = { login, register, getAllUsers };

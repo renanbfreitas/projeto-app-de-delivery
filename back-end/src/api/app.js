@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const UserRoute = require('./routes/UserRoutes');
 const registerRoute = require('./routes/RegisterRoute');
-const productRoute = require('./routes/ProductRouter');
+const CustomerRoute = require('./routes/CustomerRoute');
 const OrderRoute = require('./routes/OrderRouter');
 
 const app = express();
@@ -15,7 +15,7 @@ app.get('/coffee', (_req, res) => res.status(418).end());
 app.use('/images', express.static('public'));
 app.use('/register', registerRoute);
 app.use('/login', UserRoute);
-app.use('/customer/products', productRoute);
+app.use('/customer', CustomerRoute);
 app.use('/orders', OrderRoute);
 
 module.exports = app;

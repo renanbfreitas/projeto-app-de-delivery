@@ -20,4 +20,11 @@ const getSellers = async () => {
   return { type: null, message: dataValues };
 };
 
-module.exports = { checkoutOrder, getSellers };
+const getOrders = async (id) => {
+  const dataValues = await Sales.findAll({
+    where: { userId: id },
+  });
+  return { type: null, message: dataValues };
+};
+
+module.exports = { checkoutOrder, getSellers, getOrders };

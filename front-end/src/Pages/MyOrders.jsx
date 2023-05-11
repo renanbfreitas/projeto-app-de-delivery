@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Navbar from '../Components/Navbar';
 import CardOrder from '../Components/CardOrder';
 import { getUser } from '../Utils/LocalStorage';
+import { getOrders } from '../Utils/axios';
 
 function MyOrders() {
   const [orders, setOrders] = useState([]);
@@ -11,7 +12,7 @@ function MyOrders() {
     const { id } = getUser();
     console.log(id);
     const request = async () => {
-      const response = await getRequest(`/sales/${id}`);
+      const response = await getOrders(`/customer/orders/${id}`);
       setOrders(response);
     };
     request();
