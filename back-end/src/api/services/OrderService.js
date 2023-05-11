@@ -32,4 +32,11 @@ const getOrder = async (id) => {
   return { type: null, message: result };
 };
 
-module.exports = { checkoutOrder, getSellers, getOrder };
+const getOrders = async (id) => {
+  const dataValues = await Sales.findAll({
+    where: { userId: id },
+  });
+  return { type: null, message: dataValues };
+};
+
+module.exports = { checkoutOrder, getSellers, getOrder, getOrders };
