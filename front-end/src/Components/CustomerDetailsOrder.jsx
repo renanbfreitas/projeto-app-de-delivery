@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import Button from './Button';
 import { getOrderInfo } from '../Utils/axios';
 
-export default function OrderDetails() {
+export default function CustomerDetailsOrder() {
   const [orderInfo, setOrderInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const { id: orderId } = useParams();
