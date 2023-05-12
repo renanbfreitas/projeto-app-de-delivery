@@ -39,4 +39,6 @@ const getOrders = async (id) => {
   return { type: null, message: dataValues };
 };
 
-module.exports = { checkoutOrder, getSellers, getOrder, getOrders };
+const updateOrderStatus = async (id, status) => Sales.update({ status }, { where: { id } });
+
+module.exports = { checkoutOrder, getSellers, getOrder, getOrders, updateOrderStatus };

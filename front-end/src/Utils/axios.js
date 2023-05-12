@@ -42,4 +42,6 @@ export const getOrders = async (endpoint) => {
   return data;
 };
 
+export const updateOrderStatus = async (endpoint, body) => api.patch(endpoint, body);
+
 export default api;

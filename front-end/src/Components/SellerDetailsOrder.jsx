@@ -1,26 +1,57 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Button from './Button';
-import { getOrderInfo } from '../Utils/axios';
+import { getOrderInfo, updateOrderStatus } from '../Utils/axios';
 
 export default function SellerDetailsOrder() {
   const [orderInfo, setOrderInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isPrepareDisabled, setIsPrepareDisabled] = useState(false);
+  const [isDispatchDisabled, setIsDispatchDisabled] = useState(true);
   const { id: orderId } = useParams();
   const dateId = 'seller_order_details__element-order-details-label-order-date';
   const statusId = 'seller_order_details__element-order-details-label-delivery-status';
 
+  const requestOrder = async () => {
+    const order = await getOrderInfo(`/orders/getOrder/${orderId}`);
+    if (order.status !== 'Pendente') {
+      setIsPrepareDisabled(true);
+    }
+    if (order.status === 'Preparando') {
+      setIsDispatchDisabled(false);
+    }
+    setOrderInfo(order);
+  };
+
   useEffect(() => {
-    const requestOrder = async () => {
-      const order = await getOrderInfo(`/orders/getOrder/${orderId}`);
-      setOrderInfo(order);
-    };
     requestOrder();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orderId]);
 
   useEffect(() => {
     if (orderInfo) setIsLoading(false);
   }, [orderInfo]);
+
+  const prepareOrder = async () => {
+    setIsPrepareDisabled(true);
+    await updateOrderStatus(
+      `/orders/update/${orderId}`,
+      { status: 'Preparando' },
+    );
+    setIsDispatchDisabled(false);
+    const newOrderInfo = { ...orderInfo, status: 'Preparando' };
+    setOrderInfo(newOrderInfo);
+  };
+
+  const dispatchOrder = async () => {
+    setIsDispatchDisabled(true);
+    await updateOrderStatus(
+      `/orders/update/${orderId}`,
+      { status: 'Em Trânsito' },
+    );
+    const newOrderInfo = { ...orderInfo, status: 'Em Trânsito' };
+    setOrderInfo(newOrderInfo);
+  };
 
   if (isLoading) return <p>Carregando...</p>;
   return (
@@ -46,17 +77,17 @@ export default function SellerDetailsOrder() {
             </span>
             <Button
               id="prepare_order"
-              onClick={ () => { } }
+              onClick={ () => prepareOrder() }
               text="PREPARAR PEDIDO"
               dataTestId="seller_order_details__button-preparing-check"
-              disabled={ false }
+              disabled={ isPrepareDisabled }
             />
             <Button
               id="deliver_order"
-              onClick={ () => { } }
+              onClick={ () => dispatchOrder() }
               text="SAIU PARA ENTREGA"
               dataTestId="seller_order_details__button-dispatch-check"
-              disabled
+              disabled={ isDispatchDisabled }
             />
           </div>
         </div>
