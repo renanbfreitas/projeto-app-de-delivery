@@ -32,8 +32,6 @@ const getSales = async (req, res) => {
     const { id: rawId } = req.params;
     const id = Number(rawId);
     const { status } = req.body;
-    console.log(req.params);
-    console.log(req.body);
 
     await OrderService.updateOrderStatus(id, status);
     return res.status(200).end();
