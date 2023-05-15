@@ -6,5 +6,6 @@ const OrderRoute = Router();
 
 OrderRoute.post('/finish', verifyToken, OrderController.checkoutOrder);
 OrderRoute.get('/sellers', OrderController.getSellers);
+OrderRoute.get('/sales/:id', OrderController.getSalesFromSeller);
 
 module.exports = OrderRoute;
