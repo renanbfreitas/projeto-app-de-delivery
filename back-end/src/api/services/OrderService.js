@@ -39,6 +39,8 @@ const getOrders = async (id) => {
   return { type: null, message: dataValues };
 };
 
+const updateOrderStatus = async (id, status) => Sales.update({ status }, { where: { id } });
+
 const getSellersId = async (id) => {
   const dataValues = await Sales.findAll({
     where: { sellerId: id },
@@ -46,4 +48,4 @@ const getSellersId = async (id) => {
   return { type: null, message: dataValues };
 };
 
-module.exports = { checkoutOrder, getSellers, getOrder, getOrders, getSellersId };
+module.exports = { checkoutOrder, getSellers, getOrder, getOrders, getSellersId, updateOrderStatus };

@@ -28,10 +28,19 @@ const getSalesFromSeller = async (req, res) => {
 };
 
  const getOrder = async (req, res) => {
-   const { id } = req.params;
-   const numberId = Number(id);
-  const { message } = await OrderService.getOrder(numberId);
+   const { id: rawId } = req.params;
+   const id = Number(rawId);
+  const { message } = await OrderService.getOrder(id);
   return res.status(200).json(message);
  };
 
-module.exports = { checkoutOrder, getSellers, getOrder, getSales, getSalesFromSeller };
+ const updateOrderStatus = async (req, res) => {
+    const { id: rawId } = req.params;
+    const id = Number(rawId);
+    const { status } = req.body;
+
+    await OrderService.updateOrderStatus(id, status);
+    return res.status(200).end();
+ };
+
+module.exports = { checkoutOrder, getSellers, getOrder, getSales, updateOrderStatus, getSalesFromSeller };
