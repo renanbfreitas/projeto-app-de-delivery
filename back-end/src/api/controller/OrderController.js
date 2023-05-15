@@ -35,4 +35,3 @@ const getSalesFromSeller = async (req, res) => {
  };
 
 module.exports = { checkoutOrder, getSellers, getOrder, getSales, getSalesFromSeller };
-
