@@ -14,6 +14,8 @@ function Login() {
   const [isDisable, setIsDisable] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const [toRegister, setToRegister] = useState(false);
+  const [userRole, setUserRole] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const verifyFields = () => {
     const MIN_LENGTH = 6;
@@ -23,7 +25,10 @@ function Login() {
 
   useEffect(() => {
     const user = getUser();
-    if (user) return setIsLogged(true);
+    if (user) {
+      setIsLogged(true);
+      setUserRole(user.role);
+    }
   }, []);
 
   useEffect(() => {
@@ -40,6 +45,9 @@ function Login() {
       const { message } = await loginRequest('/login', loginInfo);
       setToken(message.token);
       localStorage.setItem('user', JSON.stringify(message));
+      const userget = getUser();
+      setUserRole(userget.role);
+      setIsLoading(false);
       return setIsLogged(true);
     } catch (error) {
       setIsIncorrectValues(true);
@@ -49,7 +57,10 @@ function Login() {
 
   return (
     <div>
-      {isLogged && <Redirect to="/customer/products" />}
+      {isLoading && !isLogged && <p>Carregando...</p>}
+      {isLogged && userRole === 'customer' && <Redirect to="/customer/products" />}
+      {isLogged && userRole === 'seller' && <Redirect to="/seller/orders" />}
+
       <form>
         <Input
           type="email"
@@ -90,7 +101,6 @@ function Login() {
           </p>
         )
       }
-      {isLogged && <Redirect to="/customer/products" />}
       {toRegister && <Redirect to="/register" />}
     </div>
   );
