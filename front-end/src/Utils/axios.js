@@ -32,6 +32,11 @@ export const getSellers = async (endpoint) => {
   return data;
 };
 
+export const getOrderInfo = async (endpoint) => {
+  const { data } = await api.get(endpoint);
+  return data;
+};
+
 export const getOrders = async (endpoint) => {
   const { data } = await api.get(endpoint);
   return data;

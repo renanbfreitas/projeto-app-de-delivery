@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { checkoutOrder, getSellers, setToken } from '../Utils/axios';
 
-function DetailsOrders() {
+function Checkout() {
   const [sellerId, setSellerId] = useState(2);
   const [sellers, setSellers] = useState([]);
   const [address, setAddress] = useState('');
@@ -89,4 +89,4 @@ function DetailsOrders() {
   );
 }
 
-export default DetailsOrders;
+export default Checkout;
