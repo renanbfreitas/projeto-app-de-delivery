@@ -6,6 +6,7 @@ import Products from '../Pages/Products';
 import CheckoutPage from '../Pages/CheckoutPage';
 import OrderDetails from '../Pages/OrderDetails';
 import MyOrders from '../Pages/MyOrders';
+import SellerOrder from '../Pages/SellerOrder';
 
 function Routes() {
   return (
@@ -16,6 +17,7 @@ function Routes() {
       <Route path="/customer/checkout" component={ CheckoutPage } />
       <Route path="/customer/orders/:id" component={ OrderDetails } />
       <Route path="/customer/orders" component={ MyOrders } />
+      <Route path="/seller/orders" component={ SellerOrder } />
       <Route exact path="/">
         <Redirect to="/login" />
       </Route>

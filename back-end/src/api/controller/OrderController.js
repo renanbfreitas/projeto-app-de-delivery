@@ -21,6 +21,12 @@ const getSales = async (req, res) => {
   return res.status(200).json(message);
 };
 
+const getSalesFromSeller = async (req, res) => {
+  const { id } = req.params;
+  const { message } = await OrderService.getSellersId(id);
+  return res.status(200).json(message);
+};
+
  const getOrder = async (req, res) => {
    const { id } = req.params;
    const numberId = Number(id);
@@ -28,4 +34,4 @@ const getSales = async (req, res) => {
   return res.status(200).json(message);
  };
 
-module.exports = { checkoutOrder, getSellers, getOrder, getSales };
+module.exports = { checkoutOrder, getSellers, getOrder, getSales, getSalesFromSeller };
