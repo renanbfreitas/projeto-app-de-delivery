@@ -44,4 +44,6 @@ export const getOrders = async (endpoint) => {
 
 export const updateOrderStatus = async (endpoint, body) => api.patch(endpoint, body);
 
+export const adminRegister = async (endpoint, body) => api.post(endpoint, body);
+
 export default api;

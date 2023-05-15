@@ -5,6 +5,7 @@ import Button from '../Components/Button';
 import Input from '../Components/Input';
 import { loginRequest, setToken } from '../Utils/axios';
 import { getUser } from '../Utils/LocalStorage';
+import verifyFields from '../Utils/verifyFields';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -15,20 +16,13 @@ function Login() {
   const [errorMessage, setErrorMessage] = useState('');
   const [toRegister, setToRegister] = useState(false);
 
-  const verifyFields = () => {
-    const MIN_LENGTH = 6;
-    const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return regexEmail.test(email) && password.length >= MIN_LENGTH;
-  };
-
   useEffect(() => {
     const user = getUser();
     if (user) return setIsLogged(true);
   }, []);
 
   useEffect(() => {
-    const verify = verifyFields();
-    setIsDisable(!verify);
+    setIsDisable(!verifyFields(null, email, password));
   }, [email, password]);
 
   const handleLogin = async () => {
