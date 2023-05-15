@@ -78,7 +78,7 @@ function Register() {
       </form>
       {
         errorMessage && (
-          <p data-testid="common_register__element-invalid_register">
+          <p data-testid="admin_manage__element-invalid-register">
             {errorMessage}
           </p>
         )
