@@ -13,4 +13,14 @@ const AdminService = require('../services/AdminService');
     }
   };
 
-module.exports = { adminRegister };
+  const adminGetUsers = async (req, res) => {
+    try {
+    const { message } = await AdminService.adminGetUsers();
+
+    return res.status(200).json(message);
+  } catch (error) {
+    return res.status(500).json(error.message);
+  }
+  };
+
+module.exports = { adminRegister, adminGetUsers };

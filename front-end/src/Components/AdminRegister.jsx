@@ -4,7 +4,7 @@ import verifyFields from '../Utils/verifyFields';
 import Button from './Button';
 import Input from './Input';
 
-function Register() {
+function AdminRegister() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -28,6 +28,7 @@ function Register() {
 
   return (
     <div>
+      <span>Cadastrar novo usuário</span>
       <form>
         <Input
           type="text"
@@ -87,4 +88,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default AdminRegister;

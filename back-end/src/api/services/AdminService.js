@@ -21,6 +21,13 @@ const adminRegister = async (userInfo) => {
   if (!result) {
     return { type: 'INVALID_VALUES', message: invalidRegister };
   }
+  return { type: null, message: null };
 };
 
-module.exports = { adminRegister };
+const adminGetUsers = async () => {
+  const users = await User.findAll();
+
+  return { message: users };
+};
+
+module.exports = { adminRegister, adminGetUsers };
