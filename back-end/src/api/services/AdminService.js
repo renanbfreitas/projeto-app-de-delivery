@@ -30,4 +30,12 @@ const adminGetUsers = async () => {
   return { message: users };
 };
 
-module.exports = { adminRegister, adminGetUsers };
+const adminDeleteUser = async (userId) => {
+  const result = await User.destroy({ where: { id: userId } });
+
+  if (!result) return { type: 'NOT_FOUND' };
+
+  return { type: null };
+};
+
+module.exports = { adminRegister, adminGetUsers, adminDeleteUser };

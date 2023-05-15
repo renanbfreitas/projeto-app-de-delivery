@@ -54,4 +54,9 @@ export const adminGetUsers = async (endpoint) => {
   return data;
 };
 
+export const adminDeleteUser = async (endpoint) => {
+  const { data } = await api.delete(endpoint);
+  return data;
+};
+
 export default api;
