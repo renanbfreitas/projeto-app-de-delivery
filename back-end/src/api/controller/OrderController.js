@@ -43,4 +43,11 @@ const getSalesFromSeller = async (req, res) => {
     return res.status(200).end();
  };
 
-module.exports = { checkoutOrder, getSellers, getOrder, getSales, updateOrderStatus, getSalesFromSeller };
+module.exports = { 
+  checkoutOrder,
+  getSellers,
+  getOrder,
+  getSales,
+  updateOrderStatus,
+  getSalesFromSeller,
+};

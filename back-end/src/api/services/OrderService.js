@@ -48,4 +48,11 @@ const getSellersId = async (id) => {
   return { type: null, message: dataValues };
 };
 
-module.exports = { checkoutOrder, getSellers, getOrder, getOrders, getSellersId, updateOrderStatus };
+module.exports = { 
+  checkoutOrder,
+  getSellers,
+  getOrder,
+  getOrders,
+  getSellersId,
+  updateOrderStatus,
+};

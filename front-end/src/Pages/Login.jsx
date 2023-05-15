@@ -54,6 +54,7 @@ function Login() {
       {isLoading && !isLogged && <p>Carregando...</p>}
       {isLogged && userRole === 'customer' && <Redirect to="/customer/products" />}
       {isLogged && userRole === 'seller' && <Redirect to="/seller/orders" />}
+      {isLogged && userRole === 'administrator' && <Redirect to="/admin/manage" />}
 
       <form>
         <Input
