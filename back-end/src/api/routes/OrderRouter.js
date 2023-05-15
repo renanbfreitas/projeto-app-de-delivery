@@ -8,5 +8,6 @@ OrderRoute.post('/finish', verifyToken, OrderController.checkoutOrder);
 OrderRoute.get('/getOrder/:id', OrderController.getOrder);
 OrderRoute.get('/sellers', OrderController.getSellers);
 OrderRoute.patch('/update/:id', OrderController.updateOrderStatus);
+OrderRoute.get('/sales/:id', OrderController.getSalesFromSeller);
 
 module.exports = OrderRoute;
