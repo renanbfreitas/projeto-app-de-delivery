@@ -21,7 +21,7 @@ const adminRegister = async (userInfo) => {
   if (!result) {
     return { type: 'INVALID_VALUES', message: invalidRegister };
   }
-  return { type: null, message: null };
+  return { type: null, message: result };
 };
 
 const adminGetUsers = async () => {

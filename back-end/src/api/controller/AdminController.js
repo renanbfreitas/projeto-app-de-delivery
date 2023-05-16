@@ -7,7 +7,7 @@ const AdminService = require('../services/AdminService');
       const { type, message } = await AdminService.adminRegister(userInfo);
       if (type) return res.status(409).json(message);
 
-      return res.status(201).end();
+      return res.status(201).json(message);
     } catch (error) {
       return res.status(500).json(error.message);
     }

@@ -7,6 +7,7 @@ import AdminUserList from '../Components/AdminUserList';
 
 function AdminManage() {
   const [isLogged, setIsLogged] = useState(false);
+  const [userList, setUserList] = useState(null);
 
   useEffect(() => {
     const user = getUser();
@@ -17,8 +18,8 @@ function AdminManage() {
     <div>
       { isLogged && <Redirect to="/login" /> }
       <Navbar />
-      <AdminRegister />
-      <AdminUserList />
+      <AdminRegister userList={ userList } setUserList={ setUserList } />
+      <AdminUserList userList={ userList } setUserList={ setUserList } />
     </div>
   );
 }

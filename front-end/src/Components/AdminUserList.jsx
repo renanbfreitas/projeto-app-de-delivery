@@ -1,17 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { adminDeleteUser, adminGetUsers } from '../Utils/axios';
 import Button from './Button';
 
-function AdminUserList() {
-  const [userList, setUserList] = useState(null);
-
+function AdminUserList({ userList, setUserList }) {
   useEffect(() => {
     const requestUsers = async () => {
       const users = await adminGetUsers('/admin/users');
       return setUserList(users);
     };
     requestUsers();
-  }, []);
+  }, [setUserList]);
 
   const convertRole = (role) => {
     switch (role) {
@@ -82,5 +81,10 @@ function AdminUserList() {
     </div>
   );
 }
+
+AdminUserList.propTypes = {
+  userList: PropTypes.array,
+  setUserList: PropTypes.func,
+}.isRequired;
 
 export default AdminUserList;

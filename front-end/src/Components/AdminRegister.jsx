@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { adminRegister } from '../Utils/axios';
 import verifyFields from '../Utils/verifyFields';
 import Button from './Button';
 import Input from './Input';
 
-function AdminRegister() {
+function AdminRegister({ userList, setUserList }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,7 +21,8 @@ function AdminRegister() {
     const newUserInfo = { name, email, password, role };
 
     try {
-      await adminRegister('/admin/register', newUserInfo);
+      const newUser = await adminRegister('/admin/register', newUserInfo);
+      setUserList([...userList, newUser]);
     } catch ({ response: { data } }) {
       return setErrorMessage(data);
     }
@@ -87,5 +89,10 @@ function AdminRegister() {
     </div>
   );
 }
+
+AdminRegister.propTypes = {
+  userList: PropTypes.array,
+  setUserList: PropTypes.func,
+}.isRequired;
 
 export default AdminRegister;
