@@ -5,12 +5,9 @@ nav {
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   color: black;
   display: flex;
-  height: 105px;
+  height: 80px;
   justify-content: space-between;
-  left: 0%;
-  right: 0%;
-  top: 0.01px;
-  width: 1920px;
+  width: 2045px;
 }
 
 nav a {
@@ -23,3 +20,42 @@ nav a {
   text-align: center;
 }
 
+.pedidos {
+  align-items: center;
+  color: black;
+  display: center;
+  font-family: Sacramento , cursive;
+  font-size: 30px;
+  justify-content: center;
+  text-align: center;
+}
+
+.produtos {
+  align-items: center;
+  color: black;
+  display: center;
+  font-family: Sacramento , cursive;
+  font-size: 30px;
+  justify-content: center;
+  text-align: center;
+}
+
+.nomeCliente {
+  align-items: center;
+  color: black;
+  display: center;
+  font-family: Sacramento , cursive;
+  font-size: 30px;
+  justify-content: center;
+  text-align: center;
+}
+
+.sair {
+  align-items: center;
+  color: black;
+  display: center;
+  font-family: Sacramento , cursive;
+  font-size: 30px;
+  justify-content: center;
+  text-align: center;
+}

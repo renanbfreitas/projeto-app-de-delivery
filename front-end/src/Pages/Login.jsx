@@ -6,6 +6,8 @@ import Input from '../Components/Input';
 import { loginRequest, setToken } from '../Utils/axios';
 import { getUser } from '../Utils/LocalStorage';
 import verifyFields from '../Utils/verifyFields';
+import logo from '../images/logo.jpg';
+import '../Styles/pages/login.css';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -50,54 +52,70 @@ function Login() {
   };
 
   return (
-    <div>
-      {isLoading && !isLogged && <p>Carregando...</p>}
-      {isLogged && userRole === 'customer' && <Redirect to="/customer/products" />}
-      {isLogged && userRole === 'seller' && <Redirect to="/seller/orders" />}
-      {isLogged && userRole === 'administrator' && <Redirect to="/admin/manage" />}
+    <main>
+      <div>
+        {isLoading && !isLogged && <p className="name">Carregando...</p>}
+        {isLogged && userRole === 'customer' && <Redirect to="/customer/products" />}
+        {isLogged && userRole === 'seller' && <Redirect to="/seller/orders" />}
+        {isLogged && userRole === 'administrator' && <Redirect to="/admin/manage" />}
 
-      <form>
-        <Input
-          type="email"
-          placeholder="email@email.com"
-          label="Email"
-          onChange={ ({ target: { value } }) => setEmail(value) }
-          dataTestId="common_login__input-email"
-          id="email-input"
-          value={ email }
-        />
-        <Input
-          type="password"
-          placeholder="*******"
-          label="Password"
-          onChange={ ({ target: { value } }) => setPassword(value) }
-          dataTestId="common_login__input-password"
-          id="password-input"
-          value={ password }
-        />
-        <Button
-          onClick={ handleLogin }
-          text="Login"
-          dataTestId="common_login__button-login"
-          disabled={ isDisable }
-        />
-        <Button
-          onClick={ () => setToRegister(true) }
-          text="Ainda não tenho conta"
-          dataTestId="common_login__button-register"
-          disabled={ false }
-        />
-      </form>
-      {
-        isIncorrectValues
-        && (
-          <p data-testid="common_login__element-invalid-email">
-            { errorMessage }
-          </p>
-        )
-      }
-      {toRegister && <Redirect to="/register" />}
-    </div>
+        <form className="form">
+          <img src={ logo } className="logo-delivery" alt="logo" />
+          <h1 className="titulo">App de Delivery</h1>
+          <div>
+            <Input
+              className="email"
+              type="email"
+              placeholder="email@email.com"
+              label="Email"
+              onChange={ ({ target: { value } }) => setEmail(value) }
+              dataTestId="common_login__input-email"
+              id="email-input"
+              value={ email }
+            />
+          </div>
+          <div>
+            <Input
+              className="senha"
+              type="password"
+              placeholder="*******"
+              label="Password"
+              onChange={ ({ target: { value } }) => setPassword(value) }
+              dataTestId="common_login__input-password"
+              id="password-input"
+              value={ password }
+            />
+          </div>
+          <div className="buttonLogin">
+            <Button
+              className="buttonLogin"
+              onClick={ handleLogin }
+              text="Login"
+              dataTestId="common_login__button-login"
+              disabled={ isDisable }
+            />
+          </div>
+          <div className="buttonSemConta">
+            <Button
+              className="buttonSemConta"
+              onClick={ () => setToRegister(true) }
+              text="Ainda não tenho conta"
+              dataTestId="common_login__button-register"
+              disabled={ false }
+            />
+          </div>
+        </form>
+        {
+          isIncorrectValues
+          && (
+            <p data-testid="common_login__element-invalid-email">
+              {errorMessage}
+            </p>
+          )
+        }
+        {toRegister && <Redirect to="/register" />}
+      </div>
+    </main>
   );
 }
 

@@ -39,6 +39,7 @@ export default function ProductCard(product) {
         {productName}
       </h3>
       <img
+        className="ProdutoImage"
         src={ urlImage }
         alt={ productName }
         style={ { width: '50px' } }
@@ -60,6 +61,7 @@ export default function ProductCard(product) {
         text="-"
       />
       <input
+        className="buttonQtd"
         data-testid={ `customer_products__input-card-quantity-${id}` }
         type="number"
         name="input_card_quantity"

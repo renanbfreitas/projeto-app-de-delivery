@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap') ;
+
+body {
+  align-items: center;
+  background: url('../../images/cerveja-artesanal-x-cerveja-convencional.webp') fixed no-repeat;
+  background-position: 5% 75%;
+  background-size: cover;
+  justify-content: center;
+  text-align: center;
+}
+
+main {
+  display: flex;
+  height: 980px;
+  justify-content: center;
+  margin-top: 250px;
+  position: fixed;
+  text-align: center;
+  width: 1850px;
+}
+
+.form {
+  align-items: center;
+  color: green;
+  display: center;
+  font-family: Sacramento , cursive;
+  font-size: 50px;
+  justify-content: center;
+  text-align: center;
+}
+
+.titulo {
+  align-items: center;
+  color: green;
+  display: center;
+  font-family: Sacramento , cursive;
+  font-size: 50px;
+  justify-content: center;
+  text-align: center;
+}
+
+.email {
+  border-radius: 20px;
+  display: center;
+  font-family: Sacramento , cursive;
+  font-size: 30px;
+  height: 45px;
+  justify-content: center;
+  text-align: center;
+  width: 400px;
+}
+
+.senha {
+  border-radius: 20px;
+  display: center;
+  font-family: Sacramento , cursive;
+  font-size: 30px;
+  height: 45px;
+  justify-content: center;
+  text-align: center;
+  width: 400px;
+}
+
+.buttonLogin {
+  border-radius: 20px;
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 20px;
+  height: 40px;
+  width: 200px;
+}
+
+.logo-delivery {
+  background-color: gold;
+  border: 5px solid gold;
+  border-radius: 200px;
+  height: 85px;
+  justify-content: center;
+  text-align: center;
+  width: 250px;
+}

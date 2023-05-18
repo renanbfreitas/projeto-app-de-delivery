@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap') ;
+
+.tituloPg {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 40px;
+  height: 40px;
+  width: 500px;
+}
+
+.pVendedora {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 40px;
+  height: 40px;
+  width: 500px;
+}
+
+.pVendedora1 {
+  border-radius: 20px;
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 30px;
+  height: 40px;
+  width: 275px;
+}
+
+.endereco {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 40px;
+  height: 40px;
+  width: 500px;
+}
+
+.endereco1 {
+  border-radius: 20px;
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 20px;
+  height: 40px;
+  width: 275px;
+}
+
+.numero {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 40px;
+  height: 40px;
+  width: 500px;
+}
+
+.numero1 {
+  border-radius: 20px;
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 20px;
+  height: 40px;
+  width: 275px;
+}
+
+.finalizaPedido {
+  border-radius: 20px;
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 15px;
+  height: 40px;
+  width: 275px;
+}

@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap') ;
+
+.tabela {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 25px;
+  height: 40px;
+  width: 600px;
+}
+
+.number {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 20px;
+  height: 40px;
+  width: 100px;
+}
+
+.name {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 20px;
+  height: 40px;
+  width: 100px;
+}
+
+.qtd {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 20px;
+  height: 40px;
+  width: 100px;
+}
+
+.unitPrice {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 20px;
+  height: 40px;
+  width: 100px;
+}
+
+.totalPrice {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 20px;
+  height: 40px;
+  width: 100px;
+}
+
+.detalhePedido {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 40px;
+  height: 200px;
+  width: 20px;
+}
+
+.tabelaDetails {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 45px;
+  height: 20px;
+  width: 50px;
+}
+
+.itemCustomer {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 50px;
+  height: 100px;
+  width: 280px;
+}
+
+.descricaoCustomer {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 50px;
+  height: 100px;
+  width: 280px;
+}
+
+.qtdCustomer {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 50px;
+  height: 100px;
+  width: 280px;
+}
+
+.valorUnitCustomer {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 50px;
+  height: 100px;
+  width: 280px;
+}
+
+.subTotalCustomer {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 50px;
+  height: 100px;
+  width: 280px;
+}
+
+.buttonMarcarComoEntregue {
+  border-radius: 20px;
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 100px;
+  height: 40px;
+  width: 200px;
+}

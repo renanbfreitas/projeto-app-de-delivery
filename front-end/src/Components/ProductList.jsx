@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getProductsCart, removeProduct } from '../Utils/LocalStorage';
+import '../Styles/components/productList.css';
 
 export default function ProductList() {
   const [cartProduct, setCartProducts] = useState([]);
@@ -15,7 +16,7 @@ export default function ProductList() {
     <div>
       <table border="1">
         <thead>
-          <tr>
+          <tr className="tabela">
             <th>Item</th>
             <th>Descrição</th>
             <th>Quantidade</th>
@@ -28,6 +29,7 @@ export default function ProductList() {
           {cartProduct.map((product, index) => (
             <tr key={ product.id }>
               <th
+                className="number"
                 data-testid={
                   `customer_checkout__element-order-table-item-number-${index}`
                 }
@@ -36,6 +38,7 @@ export default function ProductList() {
               </th>
 
               <th
+                className="name"
                 data-testid={
                   `customer_checkout__element-order-table-name-${index}`
                 }
@@ -44,6 +47,7 @@ export default function ProductList() {
               </th>
 
               <th
+                className="qtd"
                 data-testid={
                   `customer_checkout__element-order-table-quantity-${index}`
                 }
@@ -52,6 +56,7 @@ export default function ProductList() {
               </th>
 
               <th
+                className="unitPrice"
                 data-testid={
                   `customer_checkout__element-order-table-unit-price-${index}`
                 }
@@ -60,6 +65,7 @@ export default function ProductList() {
               </th>
 
               <th
+                className="totalPrice"
                 data-testid={
                   `customer_checkout__element-order-table-sub-total-${index}`
                 }
@@ -71,9 +77,11 @@ export default function ProductList() {
 
               </th>
               <th
+                className="remove"
                 data-testid={ `customer_checkout__element-order-table-remove-${index}` }
               >
                 <button
+                  className="buttonEliminar"
                   type="button"
                   onClick={ () => { setCartProducts(removeProduct(product.id)); } }
                 >
@@ -86,6 +94,7 @@ export default function ProductList() {
         </tbody>
       </table>
       <button
+        className="buttonVerCarrinho"
         data-testid="customer_checkout__element-order-total-price"
         type="button"
       >

@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap') ;
+
+.formRegister {
+  align-items: center;
+  color: blue;
+  display: center;
+  font-family: Sacramento , cursive;
+  font-size: 50px;
+  justify-content: center;
+  text-align: center;
+}
+
+.nameRegister {
+  align-items: center;
+  display: center;
+  font-family: Sacramento , cursive;
+  font-size: 50px;
+  justify-content: center;
+  text-align: center;
+}
+
+.emailRegister {
+  align-items: center;
+  display: center;
+  font-family: Sacramento , cursive;
+  font-size: 50px;
+  justify-content: center;
+  text-align: center;
+}
+
+.passwordRegister {
+  align-items: center;
+  display: center;
+  font-family: Sacramento , cursive;
+  font-size: 50px;
+  justify-content: center;
+  text-align: center;
+}

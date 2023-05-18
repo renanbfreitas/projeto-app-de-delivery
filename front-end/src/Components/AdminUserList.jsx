@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { adminDeleteUser, adminGetUsers } from '../Utils/axios';
 import Button from './Button';
+import '../Styles/components/adminUserList.css';
 
 function AdminUserList({ userList, setUserList }) {
   useEffect(() => {
@@ -27,16 +28,16 @@ function AdminUserList({ userList, setUserList }) {
     setUserList(newUserList);
   };
 
-  if (!userList) return <p>Carregando usuários...</p>;
+  if (!userList) return <p className="pVendedora">Carregando usuários...</p>;
   return (
     <div>
-      <span>Lista de usuários</span>
+      <span className="pVendedora">Lista de usuários</span>
       {
-        userList.length === 0 ? <p>Não há usuários cadastrados</p>
+        userList.length === 0 ? <p className="pVendedora">Não há usuários cadastrados</p>
           : (
             <table>
               <thead>
-                <tr>
+                <tr className="classificacao">
                   <th>Item</th>
                   <th>Nome</th>
                   <th>Email</th>
@@ -48,24 +49,37 @@ function AdminUserList({ userList, setUserList }) {
                 {userList.map((user, i) => (
                   <tr key={ user.id }>
                     <th
+                      className="number"
                       data-testid={ `admin_manage__element-user-table-item-number-${i}` }
                     >
                       {i + 1}
                     </th>
 
-                    <th data-testid={ `admin_manage__element-user-table-name-${i}` }>
+                    <th
+                      className="name"
+                      data-testid={ `admin_manage__element-user-table-name-${i}` }
+                    >
                       {user.name}
                     </th>
 
-                    <th data-testid={ `admin_manage__element-user-table-email-${i}` }>
+                    <th
+                      className="email"
+                      data-testid={ `admin_manage__element-user-table-email-${i}` }
+                    >
                       {user.email}
                     </th>
 
-                    <th data-testid={ `admin_manage__element-user-table-role-${i}` }>
+                    <th
+                      className="name"
+                      data-testid={ `admin_manage__element-user-table-role-${i}` }
+                    >
                       {convertRole(user.role)}
                     </th>
 
-                    <th data-testid={ `admin_manage__element-user-table-remove-${i}` }>
+                    <th
+                      className="name"
+                      data-testid={ `admin_manage__element-user-table-remove-${i}` }
+                    >
                       <Button
                         onClick={ () => deleteUser(user.id) }
                         text="Excluir"

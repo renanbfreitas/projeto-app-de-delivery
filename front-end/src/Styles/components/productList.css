@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap') ;
+
+.tabela {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 25px;
+  height: 40px;
+  width: 600px;
+}
+
+.number {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 20px;
+  height: 40px;
+  width: 100px;
+}
+
+.name {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 15px;
+  height: 40px;
+  width: 100px;
+}
+
+.qtd {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 20px;
+  height: 40px;
+  width: 100px;
+}
+
+.unitPrice {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 20px;
+  height: 40px;
+  width: 100px;
+}
+
+.totalPrice {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 20px;
+  height: 40px;
+  width: 100px;
+}
+
+.remove {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 20px;
+  height: 40px;
+  width: 100px;
+}
+
+.buttonEliminar {
+  border-radius: 20px;
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 20px;
+  height: 40px;
+  width: 100px;
+}

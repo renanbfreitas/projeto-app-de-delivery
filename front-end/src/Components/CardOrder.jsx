@@ -13,6 +13,7 @@ function CardOrder({ id, status, saleDate, totalPrice }) {
       <Link to={ `/customer/orders/${id}` }>
         <div>
           <span
+            className="order"
             data-testid={ `customer_orders__element-order-id-${id}` }
           >
             {id}
@@ -20,6 +21,7 @@ function CardOrder({ id, status, saleDate, totalPrice }) {
         </div>
         <div>
           <span
+            className="status"
             data-testid={ `customer_orders__element-delivery-status-${id}` }
           >
             {status}
@@ -27,11 +29,15 @@ function CardOrder({ id, status, saleDate, totalPrice }) {
         </div>
         <div>
           <p
+            className="date"
             data-testid={ `customer_orders__element-order-date-${id}` }
           >
             {formatedData}
           </p>
+        </div>
+        <div>
           <p
+            className="price"
             data-testid={ `customer_orders__element-card-price-${id}` }
           >
             {(totalPrice).replace('.', ',')}

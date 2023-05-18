@@ -54,6 +54,7 @@ export default function Products({ history }) {
         ))}
       </section>
       <button
+        className="buttonVerCarrinho"
         type="button"
         data-testid="customer_products__button-cart"
         onClick={ () => history.push('/customer/checkout') }

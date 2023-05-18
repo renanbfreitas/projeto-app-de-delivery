@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { checkoutOrder, getSellers, setToken } from '../Utils/axios';
+import '../Styles/pages/checkout.css';
 
 function Checkout() {
   const [sellerId, setSellerId] = useState(2);
@@ -44,40 +45,50 @@ function Checkout() {
 
   return (
     <div>
-      <h2>Detalhes e Endereço para Entrega</h2>
+      <h2 className="tituloPg">Detalhes e Endereço para Entrega</h2>
       <form>
-        <label htmlFor="input-seller">
-          {' '}
-          P. Vendedora Responsável:
-          <select
-            data-testid="customer_checkout__select-seller"
-            onChange={ ({ target }) => setSellerId(target.value) }
-          >
-            { sellers.map(({ id, name }, index) => (
-              <option key={ index } value={ id }>{ name }</option>
-            )) }
+        <div className="pVendedora">
+          <label htmlFor="input-seller">
+            {' '}
+            P. Vendedora Responsável:
+            <select
+              className="pVendedora1"
+              data-testid="customer_checkout__select-seller"
+              onChange={ ({ target }) => setSellerId(target.value) }
+            >
+              {sellers.map(({ id, name }, index) => (
+                <option key={ index } value={ id }>{name}</option>
+              ))}
 
-          </select>
-        </label>
-        <label htmlFor="input-address">
-          Endereço
-          <input
-            type="text"
-            id="input-address"
-            data-testid="customer_checkout__input-address"
-            onChange={ ({ target }) => setAddress(target.value) }
-          />
-        </label>
-        <label htmlFor="input-number">
-          Número
-          <input
-            type="text"
-            id="input-number"
-            data-testid="customer_checkout__input-address-number"
-            onChange={ ({ target }) => setNumber(target.value) }
-          />
-        </label>
+            </select>
+          </label>
+        </div>
+        <div className="endereco">
+          <label htmlFor="input-address">
+            Endereço
+            <input
+              className="endereco1"
+              type="text"
+              id="input-address"
+              data-testid="customer_checkout__input-address"
+              onChange={ ({ target }) => setAddress(target.value) }
+            />
+          </label>
+        </div>
+        <div className="numero">
+          <label htmlFor="input-number">
+            Número
+            <input
+              className="numero1"
+              type="text"
+              id="input-number"
+              data-testid="customer_checkout__input-address-number"
+              onChange={ ({ target }) => setNumber(target.value) }
+            />
+          </label>
+        </div>
         <button
+          className="finalizaPedido"
           type="button"
           data-testid="customer_checkout__button-submit-order"
           onClick={ () => finishOrder() }

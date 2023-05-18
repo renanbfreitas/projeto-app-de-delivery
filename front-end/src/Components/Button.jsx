@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 function Button({ onClick, text, dataTestId, disabled, nameButton = 'button' }) {
   return (
     <button
+      className="buttonLogin"
       type="button"
       onClick={ onClick }
       data-testid={ dataTestId }

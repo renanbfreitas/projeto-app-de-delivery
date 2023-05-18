@@ -53,10 +53,10 @@ export default function SellerDetailsOrder() {
     setOrderInfo(newOrderInfo);
   };
 
-  if (isLoading) return <p>Carregando...</p>;
+  if (isLoading) return <p className="pVendedora">Carregando...</p>;
   return (
     <div>
-      <p>Detalhe do Pedido</p>
+      <p className="pVendedora">Detalhe do Pedido</p>
       <div>
         <div>
           <div>
@@ -91,7 +91,10 @@ export default function SellerDetailsOrder() {
             />
           </div>
         </div>
-        <div id="table_head">
+        <div
+          className="pVendedora"
+          id="table_head"
+        >
           <span>Item</span>
           <span>Descrição</span>
           <span>Quantidade</span>

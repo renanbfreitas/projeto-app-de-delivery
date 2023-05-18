@@ -17,6 +17,7 @@ export default function Navbar() {
     <nav>
       {userRole === 'customer' && (
         <NavLink
+          className="produtos"
           to="/customer/products"
           data-testid="customer_products__element-navbar-link-products"
         >
@@ -27,6 +28,7 @@ export default function Navbar() {
       )}
       { (userRole === 'customer' || userRole === 'seller') && (
         <NavLink
+          className="pedidos"
           to={ `/${userRole}/orders` }
           data-testid="customer_products__element-navbar-link-orders"
         >
@@ -34,11 +36,13 @@ export default function Navbar() {
         </NavLink>
       )}
       <p
+        className="nomeCliente"
         data-testid="customer_products__element-navbar-user-full-name"
       >
         { userName }
       </p>
       <NavLink
+        className="sair"
         to="/login"
         data-testid="customer_products__element-navbar-link-logout"
         onClick={ () => logout() }

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import '../Styles/components/cardSeller.css';
 
 function CardSeller({ id, status, saleDate,
   totalPrice, deliveryAddress, deliveryNumber }) {
@@ -13,29 +14,34 @@ function CardSeller({ id, status, saleDate,
     <div>
       <Link to={ `/seller/orders/${id}` }>
         <div
+          className="order"
           data-testid={ `seller_orders__element-order-id-${id}` }
         >
           {id}
         </div>
 
         <div
+          className="status"
           data-testid={ `seller_orders__element-delivery-status-${id}` }
         >
           {status}
         </div>
 
         <div
+          className="date"
           data-testid={ `seller_orders__element-order-date-${id}` }
         >
           {formatedData}
         </div>
 
         <div
+          className="price"
           data-testid={ `seller_orders__element-card-price-${id}` }
         >
           {(totalPrice).replace('.', ',')}
         </div>
         <div
+          className="address"
           data-testid={ `seller_orders__element-card-address-${id}` }
         >
           {deliveryAddress}

@@ -30,8 +30,8 @@ function AdminRegister({ userList, setUserList }) {
 
   return (
     <div>
-      <span>Cadastrar novo usuário</span>
-      <form>
+      <span className="order">Cadastrar novo usuário</span>
+      <form className="form">
         <Input
           type="text"
           placeholder="Nome"
@@ -62,6 +62,7 @@ function AdminRegister({ userList, setUserList }) {
         <label htmlFor="userRoleSelect">
           Tipo
           <select
+            className="buttonLogin"
             name="userRoleSelect"
             id="userRoleSelect"
             data-testid="admin_manage__select-role"

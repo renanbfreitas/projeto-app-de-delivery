@@ -6,6 +6,7 @@ function Input({ type, label, placeholder, id, dataTestId, onChange, value }) {
     <label htmlFor={ id }>
       {label}
       <input
+        className="email"
         type={ type }
         placeholder={ placeholder }
         data-testid={ dataTestId }

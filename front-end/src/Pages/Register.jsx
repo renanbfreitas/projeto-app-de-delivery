@@ -5,6 +5,7 @@ import Button from '../Components/Button';
 import Input from '../Components/Input';
 import { registerRequest, setToken } from '../Utils/axios';
 import verifyFields from '../Utils/verifyFields';
+import '../Styles/pages/register.css';
 
 function Register() {
   const [name, setName] = useState('');
@@ -35,40 +36,51 @@ function Register() {
 
   return (
     <div>
-      <form>
-        <Input
-          type="text"
-          placeholder="Name"
-          label="Name"
-          onChange={ ({ target: { value } }) => setName(value) }
-          dataTestId="common_register__input-name"
-          id="name-input"
-          value={ name }
-        />
-        <Input
-          type="email"
-          placeholder="email@email.com"
-          label="Email"
-          onChange={ ({ target: { value } }) => setEmail(value) }
-          dataTestId="common_register__input-email"
-          id="email-input"
-          value={ email }
-        />
-        <Input
-          type="password"
-          placeholder="*******"
-          label="Password"
-          onChange={ ({ target: { value } }) => setPassword(value) }
-          dataTestId="common_register__input-password"
-          id="password-input"
-          value={ password }
-        />
-        <Button
-          onClick={ () => handleRegister() }
-          text="Login"
-          dataTestId="common_register__button-register"
-          disabled={ isDisabled }
-        />
+      <form className="formRegister">
+        <div>
+          <Input
+            className="nameRegister"
+            type="text"
+            placeholder="Name"
+            label="Name"
+            onChange={ ({ target: { value } }) => setName(value) }
+            dataTestId="common_register__input-name"
+            id="name-input"
+            value={ name }
+          />
+        </div>
+        <div>
+          <Input
+            className="emailRegister"
+            type="email"
+            placeholder="email@email.com"
+            label="Email"
+            onChange={ ({ target: { value } }) => setEmail(value) }
+            dataTestId="common_register__input-email"
+            id="email-input"
+            value={ email }
+          />
+        </div>
+        <div>
+          <Input
+            className="passwordRegister"
+            type="password"
+            placeholder="*******"
+            label="Password"
+            onChange={ ({ target: { value } }) => setPassword(value) }
+            dataTestId="common_register__input-password"
+            id="password-input"
+            value={ password }
+          />
+        </div>
+        <div>
+          <Button
+            onClick={ () => handleRegister() }
+            text="Login"
+            dataTestId="common_register__button-register"
+            disabled={ isDisabled }
+          />
+        </div>
       </form>
       {
         errorMessage && (

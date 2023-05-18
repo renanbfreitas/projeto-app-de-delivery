@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap') ;
+
+.name {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 25px;
+  height: 50px;
+  width: 200px;
+}
+
+.classificacao {
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 32px;
+  height: 90px;
+  width: 10px;
+}

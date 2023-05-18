@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap') ;
+
 .products-container {
   display: flex;
   flex-wrap: wrap;
+  font-family: Sacramento , cursive;
   gap: 34px;
   height: 1166px;
   left: 160px;
@@ -9,3 +12,12 @@
   width: 1800px;
 }
 
+.buttonVerCarrinho {
+  border-radius: 20px;
+  color: black;
+  display: inline-block;
+  font-family: Sacramento , cursive;
+  font-size: 15px;
+  height: 40px;
+  width: 200px;
+}

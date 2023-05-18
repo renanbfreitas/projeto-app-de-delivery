@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Button from './Button';
 import { getOrderInfo, updateOrderStatus } from '../Utils/axios';
+import '../Styles/components/customerDetailsOrder.css';
 
 export default function CustomerDetailsOrder() {
   const [orderInfo, setOrderInfo] = useState(null);
@@ -37,34 +38,39 @@ export default function CustomerDetailsOrder() {
     setOrderInfo(newOrderInfo);
   };
 
-  if (isLoading) return <p>Carregando...</p>;
+  if (isLoading) return <p className="pVendedora">Carregando...</p>;
   return (
     <div>
-      <p>Detalhe do Pedido</p>
+      <p className="pVendedora">Detalhe do Pedido</p>
       <div>
         <div>
           <div>
             <span
+              className="pVendedora"
               data-testid="customer_order_details__element-order-details-label-order-id"
             >
               {`Pedido ${orderId};`}
             </span>
             <span
+              className="pVendedora"
               data-testid={ sellerNameId }
             >
               {`P. Vend: ${orderInfo.seller.name}`}
             </span>
             <span
+              className="pVendedora"
               data-testid={ dateId }
             >
               {orderInfo.saleDate}
             </span>
             <span
+              className="pVendedora"
               data-testid={ statusId }
             >
               {orderInfo.status}
             </span>
             <Button
+              className="buttonMarcarComoEntregue"
               id="deliver_order"
               onClick={ () => checkOrderDelivered() }
               text="MARCAR COMO ENTREGUE"
@@ -73,17 +79,20 @@ export default function CustomerDetailsOrder() {
             />
           </div>
         </div>
-        <div id="table_head">
-          <span>Item</span>
-          <span>Descrição</span>
-          <span>Quantidade</span>
-          <span>Valor Unitário</span>
-          <span>Sub-total</span>
+        <div
+          id="table_head"
+        >
+          <span className="itemCustomer">Item</span>
+          <span className="descricaoCustomer">Descrição</span>
+          <span className="qtdCustomer">Quantidade</span>
+          <span className="valorUnitCustomer">Valor Unitário</span>
+          <span className="subTotalCustomer">Sub-total</span>
         </div>
         <div>
           {orderInfo.products.map((p, i) => (
             <div key={ i }>
               <span
+                className="number"
                 data-testid={
                   `customer_order_details__element-order-table-item-number-${i}`
                 }
@@ -91,11 +100,13 @@ export default function CustomerDetailsOrder() {
                 {i}
               </span>
               <span
+                className="name"
                 data-testid={ `customer_order_details__element-order-table-name-${i}` }
               >
                 {i}
               </span>
               <span
+                className="qtd"
                 data-testid={
                   `customer_order_details__element-order-table-quantity-${i}`
                 }
@@ -103,6 +114,7 @@ export default function CustomerDetailsOrder() {
                 {p.SalesProducts.quantity}
               </span>
               <span
+                className="unitPrice"
                 data-testid={
                   `customer_order_details__element-order-table-unit-price-${i}`
                 }
@@ -110,6 +122,7 @@ export default function CustomerDetailsOrder() {
                 {p.price}
               </span>
               <span
+                className="totalPrice"
                 data-testid={
                   `customer_order_details__element-order-table-sub-total-${i}`
                 }
@@ -119,7 +132,10 @@ export default function CustomerDetailsOrder() {
             </div>
           ))}
         </div>
-        <div data-testid="customer_order_details__element-order-total-price">
+        <div
+          className="buttonVerCarrinho"
+          data-testid="customer_order_details__element-order-total-price"
+        >
           {orderInfo.totalPrice.replace('.', ',')}
         </div>
       </div>
