@@ -30,7 +30,7 @@ src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wor
 
 <img src="https://img.shields.io/static/v1?label=Link&message=App de Delivery&color=green&style=for-the-badge&logo=github"/>
 
-### <b> <a href="https://projeto-app-de-receitas-three.vercel.app/">App de Delivery</a> </b> <br>
+### <b> <a href="https://projeto-app-de-delivery-2.vercel.app/login">App de Delivery</a> </b> <br>
 
 ---   
 
