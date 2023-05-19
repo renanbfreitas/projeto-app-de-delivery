@@ -7,9 +7,13 @@
 <img src="https://img.shields.io/static/v1?label=Objetivo&message=Contexto&color=blue&style=for-the-badge&logo=github"/>
 <p></p>
 
-Nesse projeto, a pessoa que estiver utilizando o app pode procurar uma receita específica, explorar receitas baseado em diferentes critérios, favoritar e fazer as receitas, entre outras funcionalidades.
-
-As telas sofrem variações dependendo do tipo da receita (se é comida ou bebida, no caso).
+Último projeto no módulo de Back End. 
+  
+Foi desenvolvido uma aplicação, com o intuito de criar e integrar tanto o back-end quanto o front-end, criando uma plataforma de delivery de cerveja.
+  
+Nele é possível ter 3 pessoas usuárias logando na plataforma. 
+  
+Sendo a pessoa cliente, que faz o seu pedido do produto, a pessoa vendedora, que acompanha uma ordem de venda e a pessoa administradora, responsável pelo gerenciamento do app.
 
 ---   
 <div align="center">
