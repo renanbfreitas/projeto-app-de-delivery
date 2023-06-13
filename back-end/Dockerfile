@@ -12,6 +12,7 @@ RUN npm install
 
 # Copiar o restante dos arquivos da aplicação para o container
 COPY ./ ./
+ARG EnvironmentVariable
 
 # Sinalize que aplicação expõe a porta 3001
 EXPOSE 3001
